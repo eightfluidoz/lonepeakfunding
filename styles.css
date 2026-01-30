@@ -1,0 +1,408 @@
+/* Lone Peak Funding — static one-page site (S3/CloudFront friendly) */
+
+:root{
+  --ink:#111;
+  --paper:#fff;
+  --muted:#5b5b5b;
+  --dark:#111111;
+  --dark2:#1b1b1b;
+  --line:#e6e6e6;
+  --gold:#b38a33;
+  --max: 1080px;
+  --radius: 10px;
+  --shadow: 0 16px 40px rgba(0,0,0,.18);
+}
+
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.55;
+}
+
+img{ max-width:100%; display:block; }
+a{ color:inherit; }
+
+.container{
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 22px;
+}
+
+.skipLink{
+  position:absolute;
+  left:-999px;
+  top:12px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: 8px 10px;
+  border-radius: 8px;
+  z-index: 9999;
+}
+.skipLink:focus{ left: 12px; }
+
+.siteHeader{
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+
+.headerGrid{
+  display:grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items:center;
+  height: 70px;
+  gap: 14px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+}
+.brandLogo{
+  height: 42px;
+  width: auto;
+}
+
+.headerRight{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap: 12px;
+}
+
+.siteNav{
+  display:flex;
+  align-items:center;
+  gap: 18px;
+}
+.siteNav a{
+  text-decoration:none;
+  font-size: 14px;
+  color: #444;
+}
+.siteNav a:hover{ color: #000; }
+
+.menuBtn{
+  display:none;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.hero{
+  position: relative;
+  min-height: 360px;
+  height: 430px;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+}
+.heroBg{
+  position:absolute; inset:0;
+  background-image: url("assets/hero.svg");
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.02);
+}
+.heroOverlay{
+  position:absolute; inset:0;
+  background: linear-gradient(90deg, rgba(0,0,0,.62) 0%, rgba(0,0,0,.35) 52%, rgba(0,0,0,.20) 100%);
+}
+.heroInner{ position: relative; z-index: 2; }
+.heroCopy{
+  max-width: 640px;
+  color: #fff;
+}
+.heroCopy h1{
+  margin: 0 0 10px;
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 650;
+}
+.heroCopy p{
+  margin: 0 0 18px;
+  color: rgba(255,255,255,.86);
+  font-size: 15px;
+  max-width: 520px;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding: 11px 18px;
+  border-radius: 2px; /* matches the squared Wix buttons */
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration:none;
+  cursor:pointer;
+  border: 1px solid transparent;
+}
+.btnOutline{
+  background: transparent;
+  border-color: rgba(255,255,255,.75);
+  color:#fff;
+}
+.btnOutline:hover{
+  border-color: #fff;
+  background: rgba(255,255,255,.07);
+}
+
+.section{
+  padding: 54px 0;
+}
+
+.sectionDark{
+  background: linear-gradient(90deg, #0f0f10, #141415);
+  color: #fff;
+}
+.sectionDark p{ color: rgba(255,255,255,.83); }
+
+.sectionLight{
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.twoCol{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 34px;
+  align-items:center;
+}
+
+.mediaCard{
+  border-radius: 2px;
+  overflow:hidden;
+  background: #0d0d0e;
+  border: 1px solid rgba(255,255,255,.08);
+  box-shadow: 0 8px 28px rgba(0,0,0,.22);
+}
+.mediaCard.light{
+  background: #f3f3f3;
+  border-color: var(--line);
+  box-shadow: 0 10px 26px rgba(0,0,0,.12);
+}
+
+.copy h2{
+  margin: 0 0 10px;
+  font-size: 22px;
+  font-weight: 600;
+}
+.copy p{
+  margin: 0 0 14px;
+  font-size: 14px;
+  color: rgba(255,255,255,.83);
+}
+.copy.light p{ color: #4b4b4b; }
+
+.copy .btnOutline{
+  margin-top: 8px;
+  border-color: rgba(255,255,255,.6);
+}
+.copy .btnOutline:hover{ border-color: rgba(255,255,255,.9); }
+
+.mark{
+  margin-top: 18px;
+  max-width: 180px;
+  opacity: .95;
+}
+
+.features{
+  position: relative;
+  padding: 62px 0;
+  overflow:hidden;
+}
+.featuresBg{
+  position:absolute; inset:0;
+  background-image: url("assets/services-bg.svg");
+  background-size: cover;
+  background-position: center;
+  filter: saturate(.85);
+  transform: scale(1.02);
+}
+.featuresOverlay{
+  position:absolute; inset:0;
+  background: linear-gradient(180deg, rgba(0,0,0,.70) 0%, rgba(0,0,0,.78) 55%, rgba(0,0,0,.82) 100%);
+}
+.featuresGrid{
+  position: relative;
+  z-index: 2;
+  display:grid;
+  grid-template-columns: repeat(4, minmax(0,1fr));
+  gap: 26px;
+  color:#fff;
+}
+.feature{
+  padding-top: 10px;
+}
+.icon{
+  width: 34px; height: 34px;
+  color: rgba(255,255,255,.9);
+  margin-bottom: 12px;
+}
+.icon svg{ width: 100%; height: 100%; }
+
+.feature h3{
+  margin: 0 0 10px;
+  font-size: 15px;
+  font-weight: 650;
+}
+.feature p{
+  margin:0;
+  font-size: 12.5px;
+  color: rgba(255,255,255,.82);
+}
+
+.quotesGrid{
+  display:grid;
+  grid-template-columns: repeat(4, minmax(0,1fr));
+  gap: 26px;
+  align-items:start;
+}
+.quote{
+  margin: 0;
+  text-align:center;
+  padding: 6px 10px;
+}
+.quoteMark{
+  font-size: 44px;
+  line-height: 1;
+  margin-bottom: 10px;
+  color: #111;
+}
+.quoteName{
+  font-size: 12px;
+  color: #333;
+  margin-bottom: 8px;
+}
+.quote blockquote{
+  margin: 0;
+  font-size: 12px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.contact{
+  border-top: 1px solid var(--line);
+}
+.contactGrid{
+  display:grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 34px;
+  align-items:start;
+}
+.contactLogo{
+  max-width: 260px;
+  margin-top: 6px;
+}
+.contactInfo h2{
+  margin: 0 0 12px;
+  font-size: 34px;
+  font-weight: 500;
+}
+.infoRow{
+  display:flex;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+.infoIcon{
+  width: 26px;
+  text-align:center;
+  font-size: 18px;
+  opacity: .85;
+}
+.infoLabel{
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 2px;
+}
+.infoValue{
+  font-size: 13px;
+  color: #222;
+}
+.infoLink{
+  font-size: 13px;
+  color: #222;
+  text-decoration: none;
+}
+.infoLink:hover{ text-decoration: underline; }
+
+.contactCtas{
+  display:flex;
+  flex-wrap:wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+.btnDark{
+  background: #111;
+  color: #fff;
+  border-color: #111;
+}
+.btnDark:hover{ background:#000; border-color:#000; }
+.btnGhost{
+  background: transparent;
+  border-color: #cfcfcf;
+  color: #111;
+}
+.btnGhost:hover{ border-color: #8f8f8f; }
+
+.contactNote{
+  margin-top: 14px;
+  font-size: 12px;
+  color: #6a6a6a;
+}
+
+.siteFooter{
+  background: #121212;
+  color: rgba(255,255,255,.76);
+  padding: 18px 0;
+}
+.footerInner{
+  display:flex;
+  justify-content:center;
+  gap: 16px;
+  flex-wrap:wrap;
+  font-size: 12px;
+}
+
+/* Responsive */
+@media (max-width: 960px){
+  .featuresGrid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .quotesGrid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+}
+@media (max-width: 760px){
+  .twoCol{ grid-template-columns: 1fr; }
+  .reverseOnMobile{ display:flex; flex-direction:column-reverse; gap: 22px; }
+  .contactGrid{ grid-template-columns: 1fr; }
+  .brandLogo{ height: 38px; }
+  .menuBtn{ display:inline-flex; }
+  .siteNav{
+    display:none;
+    position:absolute;
+    right: 22px;
+    top: 70px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 10px;
+    flex-direction:column;
+    align-items:stretch;
+    min-width: 180px;
+    box-shadow: 0 10px 26px rgba(0,0,0,.12);
+  }
+  .siteNav.open{ display:flex; }
+  .siteNav a{ padding: 8px 10px; }
+  .headerGrid{ grid-template-columns: 1fr auto auto; }
+  .headerSpacer{ display:none; }
+  .brand{ justify-content:flex-start; }
+}
