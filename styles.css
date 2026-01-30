@@ -109,7 +109,7 @@ a{ color:inherit; }
 }
 .heroBg{
   position:absolute; inset:0;
-  background-image: url("assets/hero.svg");
+  background-image: url("assets/hero.jpg");
   background-size: cover;
   background-position: center;
   transform: scale(1.02);
@@ -223,7 +223,7 @@ a{ color:inherit; }
 }
 .featuresBg{
   position:absolute; inset:0;
-  background-image: url("assets/services-bg.svg");
+  background-image: url("assets/services.jpg");
   background-size: cover;
   background-position: center;
   filter: saturate(.85);
