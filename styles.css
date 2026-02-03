@@ -386,7 +386,7 @@ a{ color:inherit; }
   .twoCol{ grid-template-columns: 1fr; }
   .reverseOnMobile{ display:flex; flex-direction:column-reverse; gap: 22px; }
   .contactGrid{ grid-template-columns: 1fr; }
-  .brandLogo{ height: 38px; }
+  .brandLogo{ height: 65px; }
   .menuBtn{ display:inline-flex; }
   .siteNav{
     display:none;
