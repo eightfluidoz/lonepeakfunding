@@ -32,6 +32,23 @@ a{ color:inherit; }
   padding: 0 22px;
 }
 
+#btn-apply{
+  cursor: pointer;
+  outline: 0;
+  color: #fff;
+  background-color: #1E392F;
+  border-color: #0d6efd;
+  display: inline-block;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  border: 1px solid transparent;
+  padding: 6px 12px;
+  font-size: 16px;
+  border-radius: .25rem;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
 .skipLink{
   position:absolute;
   left:-999px;
